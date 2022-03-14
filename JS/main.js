@@ -1,4 +1,25 @@
-AOS.init();
+$(function() {                              
+  //makes header-spacer the same height as header
+  var headerHeight = $("#header").height();
+  $("#header-spacer").css("height", headerHeight)
+
+  //adds shadow to header when scrolled
+  $(document).scroll(function() {
+      $("#header").toggleClass('scrolled', $(this).scrollTop() > 20);
+  });
+
+  $("#btn-login-avancar").click( function(){
+    $("#label-login-email, #input-login-email").addClass("hidden");
+
+    $("#label-login-senha, #input-login-senha, #go-back").removeClass("hidden");
+  });
+
+  $("#go-back").click( function(){
+    $("#label-login-email, #input-login-email").removeClass("hidden");
+
+    $("#label-login-senha, #input-login-senha, #go-back").addClass("hidden");
+  });
+});
 
 var xhr = new XMLHttpRequest();
 
