@@ -7,7 +7,7 @@ $('#test').click( function() {
         
     }
 
-a
+
 });
 
 $('input#delete').click( function() {
