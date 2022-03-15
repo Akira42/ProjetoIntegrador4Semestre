@@ -1,0 +1,63 @@
+#page-content {
+    height:50rem;
+}
+
+#dashboard-menu {
+    text-align: right;
+    padding: 2rem 0;
+    border-right: 2px solid #CD342E;
+}
+
+#dashboard-menu ul {
+    padding:0;
+    list-style:none;
+} 
+
+#dashboard-menu ul li {
+    list-style:none;
+    padding: 0.7rem 1rem;
+}
+
+#dashboard-menu ul li.selected {
+    background-color:#CD342E;
+}
+
+#dashboard-menu ul li.selected a {
+    color:#111;
+}
+
+#dashboard-menu h2, #dashboard-menu ul li a {
+    color:#CD342E;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#dashboard-menu h2 {
+    font-weight: bold;
+    padding-right:1rem;
+}
+
+#dashboard-menu ul li a {
+    font-size: 27px;
+}
+
+#tabela-dashboard {
+    border-radius: 10px;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+#tabela-dashboard td {
+    padding: 0.2rem 0.4rem;
+    border: 2px solid #7B7B7B;
+    font-weight: bold;
+}
+
+#tabela-dashboard thead td {
+    color: #7B7B7B;
+    height: 3rem;
+}
+
+#tabela-dashboard tbody td {
+    color: #7B7B7B;
+}
