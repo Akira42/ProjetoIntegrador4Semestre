@@ -7,7 +7,6 @@ $(function() {
   $(document).scroll(function() {
       $("#header").toggleClass('scrolled', $(this).scrollTop() > 20);
   });
-
 });
 
 var xhr = new XMLHttpRequest();

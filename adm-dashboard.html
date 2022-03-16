@@ -63,7 +63,6 @@
           </nav>
 
           <div id="dashboard-table" class="col-9 container">
-            <button id="test" value="test">Test</button>
             <table id="tabela-dashboard" class="">
 
               <thead>
@@ -79,20 +78,27 @@
                 </tr>
               </thead>
 
-              <tbody>
-                <tr>
-                  <td><input type="checkbox"></td>
-                  <td class="">Lorem</td>
-                  <td class="">Ipsum</td>
-                  <td class=""></td>
-                  <td class=""></td>
-                  <td class=""></td>
-                  <td class=""></td>
-                  <td class=""></td>
-                </tr>
-              </tbody>
+              <tbody id="dynamic-table"></tbody>
 
             </table>
+
+            <button id="delete">Deletar</button>
+            <button id="adicionar">Adicionar</button>
+
+            <form id="addUser" method="POST">
+              <label for="name">Nome</label><br>
+              <input type="text" id="name" name="name"><br>
+  
+              <label for="email">Email</label><br>
+              <input type="text" id="email" name="email"><br>
+  
+              <label for="phone">Telefone</label><br>
+              <input type="number" id="phone" name="phone"><br>
+  
+              <label for="password">Senha</label><br>
+              <input type="text" id="password" name="password"><br>
+  
+            </form>
 
           </div>
 
