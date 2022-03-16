@@ -16,26 +16,28 @@ $( document ).ready(function() {
 
   $('#delete').click( function() {
 
+
       $.each( $('.table_select'), function() {
 
-        if ( $(this).is(":checked") ) {
-          let selectedID = $(this).attr('rowid');
         
-          xhr.addEventListener("readystatechange", function() {
-            if(this.readyState === 4) {
-              console.log(this.responseText);
-            }
-          });
-        
-          xhr.open("DELETE", API + selectedID, true );
-          xhr.send();
-
-          let rowToDelete = $(this).parent().parent();
-
-          console.log(rowToDelete)
-
-          $(rowToDelete).replaceWith('');
-        }
+          if ( $(this).is(":checked") ) {
+            let selectedID = $(this).attr('rowid');
+          
+            setTimeout(function () {
+              xhr.addEventListener("readystatechange", function() {
+                if(this.readyState === 4) {
+                  console.log(this.responseText);
+                }
+              });
+              xhr.open("DELETE", API + selectedID, true );
+              xhr.send();
+            }, 500);
+  
+            let rowToDelete = $(this).parent().parent();
+            setTimeout(function () {
+              $(rowToDelete).replaceWith('');
+            }, 500);
+          }
 
       });
   });
@@ -65,12 +67,12 @@ $( document ).ready(function() {
     xhr.setRequestHeader("Content-Type", "application/json");
   
     xhr.send(data);
-  
-    $("#dynamic-table").replaceWith('<tbody id="dynamic-table"></tbody>');
 
-    API = 'https://estudo-springboo.herokuapp.com/users/';
-  
-    getData();
+    setTimeout(function () {
+      $("#dynamic-table").replaceWith('<tbody id="dynamic-table"></tbody>');
+
+      getData();
+    }, 500);
   });
 
 });
