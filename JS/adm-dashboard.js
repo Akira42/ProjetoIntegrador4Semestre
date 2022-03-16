@@ -5,7 +5,7 @@ $( document ).ready(function() {
   function getData() {
     xhr.open("GET", API, true );
     $.getJSON(API, function(data){
-      var n1 = 0;
+
       $.each(data, function(k, v) {
           $("#dynamic-table").append('<tr id="'+v.id+'" class=""><td><input rowid="'+v.id+'" class="table_select" type="checkbox"></td><td class="">'+v.id+'</td><td class="">'+v.type+'</td><td class="">'+v.name+'</td><td class="">'+v.email+'</td><td class="">'+v.cpf+'</td><td class="">'+v.phone+'</td><td class="">'+v.state+'</td></tr>')
       });
@@ -15,32 +15,37 @@ $( document ).ready(function() {
   getData();
 
   $('#delete').click( function() {
+    $('.table_select').each(function() {
+        if ( $(this).is(":checked") ) {
 
-
-      $.each( $('.table_select'), function() {
-
+          let selectedID = $(this).attr('rowid');
         
-          if ( $(this).is(":checked") ) {
-            let selectedID = $(this).attr('rowid');
-          
-            setTimeout(function () {
-              xhr.addEventListener("readystatechange", function() {
-                if(this.readyState === 4) {
-                  console.log(this.responseText);
-                }
-              });
-              xhr.open("DELETE", API + selectedID, true );
-              xhr.send();
-            }, 500);
-  
-            let rowToDelete = $(this).parent().parent();
-            setTimeout(function () {
-              $(rowToDelete).replaceWith('');
-            }, 500);
-          }
+          xhr.open("DELETE", API + selectedID, false);
+          xhr.send();
 
-      });
+          let rowToDelete = $(this).parent().parent();
+          $(rowToDelete).replaceWith('');
+        }
+    });
   });
+
+  // $('#delete').click( function() {
+  //     $.each( $('.table_select'), function() {
+        
+  //         if ( $(this).is(":checked") ) {
+
+  //           let selectedID = $(this).attr('rowid');
+          
+  //           xhr.open("DELETE", API + selectedID);
+
+  //           xhr.send();
+
+  //           let rowToDelete = $(this).parent().parent();
+  //           $(rowToDelete).replaceWith('');
+  //         }
+
+  //     });
+  // });
 
 
   $('#adicionar').click( function() {
