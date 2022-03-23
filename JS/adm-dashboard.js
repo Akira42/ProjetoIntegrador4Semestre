@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  var API = 'https://estudo-springboo.herokuapp.com/users/';
+  var API = 'https://cors-anywhere.herokuapp.com/https://four-dev.herokuapp.com/users';
 
   //fetches data and builds the table with it
   function getData() {
@@ -7,7 +7,7 @@ $( document ).ready(function() {
     $.getJSON(API, function(data){
 
       $.each(data, function(k, v) {
-          $("#dynamic-table").append('<tr id="'+v.id+'" class=""><td><input rowid="'+v.id+'" class="table_select" type="checkbox"></td><td class="">'+v.id+'</td><td class="">'+v.type+'</td><td class="">'+v.name+'</td><td class="">'+v.email+'</td><td class="">'+v.cpf+'</td><td class="">'+v.phone+'</td><td class="">'+v.state+'</td></tr>')
+          $("#dynamic-table").append('<tr id="'+v.id+'" class=""><td><input rowid="'+v.id+'" class="table_select" type="checkbox"></td><td class="">'+v.id+'</td><td class="">'+v.type+'</td><td class="">'+v.nome+'</td><td class="">'+v.email+'</td><td class="">'+v.cpf+'</td><td class="">'+v.telefone+'</td><td class="">'+v.state+'</td></tr>')
       });
     });
   }
@@ -47,18 +47,19 @@ $( document ).ready(function() {
   //     });
   // });
 
-
   $('#adicionar').click( function() {
     var name = $("#name").val();
     var email = $("#email").val();
-    var phone = $("#phone").val();
-    var password = $("#password").val();
+    var telefone = $("#telefone").val();
+    var senha = $("#senha").val();
+    var cpf = $("#cpf").val();
   
     data = JSON.stringify({
         "name" : name,
         "email": email,
-        "phone": phone,
-        "password": password
+        "telefone": telefone,
+        "cpf": cpf,
+        "senha": senha
     });
   
     xhr.addEventListener("readystatechange", function() {
@@ -78,6 +79,19 @@ $( document ).ready(function() {
 
       getData();
     }, 500);
+  });
+
+  $('#btn-login-avancar').click( function() {
+    xhr.open("GET", "https://cors-anywhere.herokuapp.com/https://four-dev.herokuapp.com/login", true );
+    
+    $.getJSON("https://cors-anywhere.herokuapp.com/https://four-dev.herokuapp.com/login", function(data){
+      data = JSON.stringify({
+        "login" : "andrewnd2009@gmail.com",
+        "senha": "andrew"
+      });
+    });
+    
+
   });
 
 });
