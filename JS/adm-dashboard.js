@@ -88,45 +88,38 @@ $( document ).ready(function() {
       "senha":"123456"
     });
 
-    xhr.open("GET", "https://four-dev.herokuapp.com/login", true );
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-          var json = JSON.parse(xhr.responseText);
-          console.log(json.login + ", " + json.senha);
-      }
-    };
+    // xhr.open("GET", "https://four-dev.herokuapp.com/login", true );
+    // xhr.setRequestHeader("Content-Type", "application/json");
     
-    console.log(data);
+    // console.log(data);
 
-    xhr.send(data);
+    // xhr.send(data);
 
-    // let dataReceived = ""; 
-    // fetch("", {
-    //     credentials: "same-origin",
-    //     mode: "same-origin",
-    //     method: "post",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: dataToSend
-    // })
-    //     .then(resp => {
-    //         if (resp.status === 200) {
-    //             return resp.json()
-    //         } else {
-    //             console.log("Status: " + resp.status)
-    //             return Promise.reject("server")
-    //         }
-    //     })
-    //     .then(dataJson => {
-    //         dataReceived = JSON.parse(dataJson)
-    //     })
-    //     .catch(err => {
-    //         if (err === "server") return
-    //         console.log(err)
-    //     })
+    let dataReceived = ""; 
+    fetch("https://four-dev.herokuapp.com/login", {
+        credentials: "same-origin",
+        mode: "same-origin",
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: data
+    })
+        .then(resp => {
+            if (resp.status === 200) {
+                return resp.json()
+            } else {
+                console.log("Status: " + resp.status)
+                return Promise.reject("server")
+            }
+        })
+        .then(dataJson => {
+            dataReceived = JSON.parse(dataJson)
+        })
+        .catch(err => {
+            if (err === "server") return
+            console.log(err)
+        })
 
-    // console.log(`Received: ${dataReceived}`)   
+    console.log(`Received: ${dataReceived}`)   
   });
 
 });
