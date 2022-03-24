@@ -88,7 +88,7 @@ $( document ).ready(function() {
       "senha":"123456"
     });
 
-    xhr.open("GET", "https://four-dev.herokuapp.com/login?data=" + encodeURIComponent(data), true );
+    xhr.open("GET", "https://four-dev.herokuapp.com/login", true );
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.onreadystatechange = function () {
@@ -100,7 +100,7 @@ $( document ).ready(function() {
     
     console.log(data);
 
-    xhr.send();
+    xhr.send(data);
 
     // let dataReceived = ""; 
     // fetch("", {
