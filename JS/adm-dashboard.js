@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  var API = 'https://cors-anywhere.herokuapp.com/https://four-dev.herokuapp.com/users';
+  var API = 'https://four-dev.herokuapp.com/users';
 
   //fetches data and builds the table with it
   function getData() {
@@ -82,15 +82,18 @@ $( document ).ready(function() {
   });
 
   $('#btn-login-avancar').click( function() {
-    xhr.open("GET", "https://cors-anywhere.herokuapp.com/https://four-dev.herokuapp.com/login", true );
+    xhr.open("GET", "https://four-dev.herokuapp.com/login", true );
     
-    $.getJSON("https://cors-anywhere.herokuapp.com/https://four-dev.herokuapp.com/login", function(data){
-      data = JSON.stringify({
-        "login" : "andrewnd2009@gmail.com",
-        "senha": "andrew"
-      });
+    data = JSON.stringify({
+      "login": [{
+        "login":"vitorakira42@gmail.com",
+        "senha":"123456"
+      }]
     });
-    
+
+    console.log(data);
+
+    xhr.send(data);
 
   });
 
