@@ -98,7 +98,7 @@ $( document ).ready(function() {
     let dataReceived = ""; 
     fetch("https://four-dev.herokuapp.com/login", {
         credentials: "same-origin",
-        mode: "same-origin",
+        mode: "no-cors",
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: data
