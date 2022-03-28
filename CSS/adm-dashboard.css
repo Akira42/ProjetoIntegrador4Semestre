@@ -53,6 +53,10 @@
     font-weight: bold;
 }
 
+#tabela-dashboard tbody#table-input td {
+    padding: 0;
+}
+
 #tabela-dashboard thead td {
     color: #7B7B7B;
     height: 3rem;
@@ -63,5 +67,18 @@
 }
 
 label {
+    color:#fff;
+}
+
+#table-input td input, #table-input td select {
+    height: 100%;
+    font-size: 17px;
+    border: none;
+    background:#111;
+    color:#fff;
+}
+
+#table-input td input::placeholder {
+    font-size: 15px;
     color:#fff;
 }
