@@ -1,10 +1,11 @@
 $( document ).ready(function() {
-  var API = 'https://four-dev.herokuapp.com/users';
+  var APIusers = 'https://four-dev.herokuapp.com/users';
+  var APIprods = 'https://four-dev.herokuapp.com/produtos';
 
-  //fetches data and builds the table with it
+  //fetches data and builds the users table with it 
   function getData() {
-    xhr.open("GET", API, true );
-    $.getJSON(API, function(data){
+    xhr.open("GET", APIusers, true );
+    $.getJSON(APIusers, function(data){
 
       $.each(data, function(k, v) {
           $("#dynamic-table").append('<tr id="'+v.id+'" class=""><td><input rowid="'+v.id+'" class="table_select" type="checkbox"></td><td class="">'+v.id+'</td><td class="">'+v.type+'</td><td class="">'+v.nome+'</td><td class="">'+v.email+'</td><td class="">'+v.cpf+'</td><td class="">'+v.telefone+'</td><td class="">'+v.state+'</td></tr>')
@@ -14,39 +15,17 @@ $( document ).ready(function() {
 
   getData();
 
-  $('#delete').click( function() {
-    $('.table_select').each(function() {
-        if ( $(this).is(":checked") ) {
+  function getProductData() {
+    xhr.open("GET", APIprods, true );
+    $.getJSON(APIprods, function(data){
 
-          let selectedID = $(this).attr('rowid');
-        
-          xhr.open("DELETE", API + selectedID, false);
-          xhr.send();
-
-          let rowToDelete = $(this).parent().parent();
-          $(rowToDelete).replaceWith('');
-        }
+      $.each(data, function(k, v) {
+          $("#dynamic-table").append('<tr id="'+v.id+'" class=""><td><input rowid="'+v.id+'" class="table_select" type="checkbox"></td><td class="">'+v.id+'</td><td class="">'+v.nome+'</td><td class="">'+v.descricao+'</td><td class="">'+v.preco+'</td><td class="">'+v.quantidade+'</td></tr>')
+      });
     });
-  });
+  }
 
-  // $('#delete').click( function() {
-  //     $.each( $('.table_select'), function() {
-        
-  //         if ( $(this).is(":checked") ) {
-
-  //           let selectedID = $(this).attr('rowid');
-          
-  //           xhr.open("DELETE", API + selectedID);
-
-  //           xhr.send();
-
-  //           let rowToDelete = $(this).parent().parent();
-  //           $(rowToDelete).replaceWith('');
-  //         }
-
-  //     });
-  // });
-
+  //add user
   $('#adicionar').click( function() {
     var name = $("#name").val();
     var email = $("#email").val();
@@ -68,7 +47,7 @@ $( document ).ready(function() {
       }
     });
   
-    xhr.open("POST", API, true);
+    xhr.open("POST", APIusers, true);
     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
     xhr.setRequestHeader("Content-Type", "application/json");
   
@@ -81,6 +60,33 @@ $( document ).ready(function() {
     }, 500);
   });
 
+  //delete user
+  $('#delete').click( function() {
+    $('.table_select').each(function() {
+      if ( $(this).is(":checked") ) {
+  
+        let selectedID = $(this).attr('rowid');
+          
+        xhr.open("DELETE", APIusers + selectedID, false);
+        xhr.send();
+  
+        let rowToDelete = $(this).parent().parent();
+        $(rowToDelete).replaceWith('');
+      }
+    });
+  });
+
+  //muda menu option
+  $("#menu-dashboard-list li").click( function(){
+    $("#menu-dashboard-list li").removeClass('selected');
+    $(this).addClass('selected');
+
+    if( $(this).is('#menu-prods') ) {
+      getProductData();
+    }
+  });
+
+  //login 
   $('#btn-login-avancar').click( function() {
     
     data = JSON.stringify({

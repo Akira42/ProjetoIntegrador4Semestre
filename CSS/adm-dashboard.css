@@ -22,11 +22,11 @@
     background-color:#CD342E;
 }
 
-#dashboard-menu ul li.selected a {
+#dashboard-menu ul li.selected {
     color:#111;
 }
 
-#dashboard-menu h2, #dashboard-menu ul li a {
+#dashboard-menu h2, #dashboard-menu ul li {
     color:#CD342E;
     text-decoration: none;
     text-transform: uppercase;
@@ -37,7 +37,7 @@
     padding-right:1rem;
 }
 
-#dashboard-menu ul li a {
+#dashboard-menu ul li {
     font-size: 27px;
 }
 

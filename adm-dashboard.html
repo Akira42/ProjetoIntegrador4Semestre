@@ -54,11 +54,11 @@
 
           <nav id="dashboard-menu" class="col-2">
             <h2>Menu</h2>
-            <ul>
-              <li class="selected"><a href="" class="">Clientes</a></li>
-              <li><a href="">Vendas</a></li>
-              <li><a href="">Produtos</a></li>
-              <li><a href="">Usuários</a></li>
+            <ul id="menu-dashboard-list">
+              <li id="menu-users" class="selected">Usuários</li>
+              <li id="menu-prods">Produtos</li>
+              <li id="menu-vendas">Vendas</li>
+              <li id="menu-clientes">Clientes</li>
             </ul>
           </nav>
 
@@ -82,8 +82,8 @@
 
             </table>
 
-            <button id="delete">Deletar</button>
-            <button id="adicionar">Adicionar</button>
+            <button id="delete">Deletar Usuário</button>
+            <button id="adicionar">Adicionar Usuário</button>
 
             <form id="addUser" method="POST">
               <label for="name">Nome</label><br>
@@ -100,7 +100,6 @@
 
               <label for="cpf">CPF</label><br>
               <input type="number" id="cpf" name="cpf"><br>
-  
             </form>
 
           </div>
