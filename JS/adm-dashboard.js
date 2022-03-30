@@ -1,6 +1,6 @@
 $( document ).ready(function() {
   var APIusers = 'https://four-dev.herokuapp.com/users';
-  var APIprods = 'https://cors-anywhere.herokuapp.com/https://four-dev.herokuapp.com/produtos';
+  var APIprods = 'https://four-dev.herokuapp.com/produtos';
 
   //listagem usuarios
   function getData() {
@@ -38,24 +38,26 @@ $( document ).ready(function() {
 
   //add user
   $('#adicionar').click( function() {
-    var tipo = $("#tipo-user").val();
+    var tipo = Number( $("#tipo-user").val() );
     var name = $("#name").val();
     var email = $("#email").val();
-    var telefone = $("#phone").val();
-    //var senha = $("#senha").val();
+    var telefone = Number( $("#phone").val() );
+    var nascimento = $("#nascimento").val();
+    var senha = $("#senha").val();
     var cpf = $("#cpf").val();
     var estado = $("#estado-user").val();
+    var status = $("#userStatus").val();
   
     data = JSON.stringify({
         "cpf": cpf,
         "nome" : name,
         "telefone": telefone,
         "email": email,
-        "dataNascimento" : "11111",
+        "dataNascimento" : nascimento,
         "tipoUsuario": tipo,
-        "senha": "aaaaaaaaaa",
+        "senha": senha,
         "endereco" : estado,
-        "status" : "ATIVO"
+        "status" : true
     });
   
     xhr.addEventListener("readystatechange", function() {
@@ -105,43 +107,6 @@ $( document ).ready(function() {
     if( $(this).is('#menu-prods') ) {
       getProductData();
     }
-  });
-
-  //login 
-  $('#btn-login-avancar').click( function() {
-    
-    data = JSON.stringify({
-      "login":"vitorakira42@gmail.com",
-      "senha":"123456"
-    });
-
-    let dataReceived = ""; 
-    fetch("https://four-dev.herokuapp.com/login", {
-        credentials: "same-origin",
-        mode: "cors",
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: data
-    })
-    .then(resp => {
-      if (resp.status === 200) {
-        return resp.json()
-      } else {
-        console.log("Status: " + resp.status)
-        return Promise.reject("server")
-      }
-    })
-    
-    .then(dataJson => {
-      dataReceived = JSON.parse(dataJson)
-    })
-      
-    .catch(err => {
-      if (err === "server") return
-      console.log(err)
-    })
-
-    console.log(`Received: ${dataReceived}`)   
   });
 
 });

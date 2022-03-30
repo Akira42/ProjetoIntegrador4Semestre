@@ -66,19 +66,29 @@
     color: #7B7B7B;
 }
 
-label {
+label, #table-input h2, #produto-input h2 {
     color:#fff;
 }
 
-#table-input td input, #table-input td select {
+#table-input {
+    width:75%;
+}
+
+#table-input input, #table-input select, #produto-input input, #produto-input select {
     height: 100%;
     font-size: 17px;
-    border: none;
     background:#111;
+    border: 1px solid #fff;
     color:#fff;
+    display:inline-block;
+    width:25%;
 }
 
-#table-input td input::placeholder {
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+#table-input input::placeholder, #produto-input input::placeholder {
     font-size: 15px;
     color:#fff;
 }
