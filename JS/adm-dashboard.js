@@ -8,12 +8,12 @@ $( document ).ready(function() {
     $.getJSON(APIusers, function(data){
 
       $("#table-head").empty();
-      $("#table-head").append('<tr class=""> <td></td><td class="">ID</td><td class="">TIPO</td><td class="">NOME</td><td class="">EMAIL</td><td class="">CPF</td><td class="">TELEFONE</td><td class="">ESTADO</td></tr>')
+      $("#table-head").append('<tr class=""> <td></td><td class="">ID</td><td class="">TIPO</td><td class="">NOME</td><td class="">EMAIL</td><td class="">CPF</td><td class="">TELEFONE</td><td class="">ESTADO</td><td class="">STATUS</td></tr>')
 
       $("#dynamic-table").empty();
 
       $.each(data, function(k, v) {
-          $("#dynamic-table").append('<tr id="'+v.id+'" class=""><td><input rowid="'+v.id+'" class="table_select" type="checkbox"></td><td class="">'+v.id+'</td><td class="">'+v.tipo+'</td><td class="">'+v.nome+'</td><td class="">'+v.email+'</td><td class="">'+v.cpf+'</td><td class="">'+v.telefone+'</td><td class="">'+v.endereco+'</td></tr>')
+          $("#dynamic-table").append('<tr id="'+v.id+'" class=""><td><input rowid="'+v.id+'" class="table_select" type="checkbox"></td><td class="">'+v.id+'</td><td class="">'+v.tipoUsuario+'</td><td class="">'+v.nome+'</td><td class="">'+v.email+'</td><td class="">'+v.cpf+'</td><td class="">'+v.telefone+'</td><td class="">'+v.endereco+'</td><td class="">'+v.status+'</td></tr>')
       });
     });
   }
@@ -79,18 +79,35 @@ $( document ).ready(function() {
     }, 500);
   });
 
-  //delete user
-  $('#delete').click( function() {
+  //update user
+  $('#atualizar').click( function() {
     $('.table_select').each(function() {
       if ( $(this).is(":checked") ) {
   
         let selectedID = $(this).attr('rowid');
-          
-        xhr.open("DELETE", APIusers + '/' + selectedID, false);
-        xhr.send();
+
+        $.getJSON(APIusers, function(data){
+
+          xhr.open("GET", APIusers + '/' + selectedID, false);
+          dataNew = JSON.stringify({
+            "cpf": data.cpf,
+            "nome" : data.nome,
+            "telefone": data.telefone,
+            "email": data.email,
+            "dataNascimento" : data.dataNascimento,
+            "tipoUsuario": data.tipoUsuario,
+            "senha": data.senha,
+            "endereco" : data.estado,
+            "status" : false
+          });
+            
+          xhr.open("PUT", APIusers + '/' + selectedID, false);
+          xhr.send(dataNew);
   
-        let rowToDelete = $(this).parent().parent();
-        $(rowToDelete).replaceWith('');
+        });
+
+        //let rowToDelete = $(this).parent().parent();
+        // $(rowToDelete).replaceWith('');
       }
     });
   });

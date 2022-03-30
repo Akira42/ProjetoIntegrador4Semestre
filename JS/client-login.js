@@ -31,11 +31,12 @@ $('#btn-login-avancar').click(function () {
     body: data
   })
     .then(resp => {
-      if (resp.status === 200) {
-        window.location.href = "file:///C:/Users/vitor.anagahara/Documents/PI/adm-dashboard.html";
-        return resp.json();
+      if (resp.status === 200 && loginEmail != '' && loginSenha != '') {
+        window.location.href = "./adm-dashboard.html";
+        return resp.json();        
       } else {
         console.log("Status: " + resp.status)
+        $('#warning').toggleClass("warningShow");
         return Promise.reject("server")
       }
     })
