@@ -22,11 +22,11 @@
     background-color:#CD342E;
 }
 
-#dashboard-menu ul li.selected a {
+#dashboard-menu ul li.selected {
     color:#111;
 }
 
-#dashboard-menu h2, #dashboard-menu ul li a {
+#dashboard-menu h2, #dashboard-menu ul li {
     color:#CD342E;
     text-decoration: none;
     text-transform: uppercase;
@@ -37,7 +37,7 @@
     padding-right:1rem;
 }
 
-#dashboard-menu ul li a {
+#dashboard-menu ul li {
     font-size: 27px;
 }
 
@@ -53,6 +53,10 @@
     font-weight: bold;
 }
 
+#tabela-dashboard tbody#table-input td {
+    padding: 0;
+}
+
 #tabela-dashboard thead td {
     color: #7B7B7B;
     height: 3rem;
@@ -62,6 +66,29 @@
     color: #7B7B7B;
 }
 
-label {
+label, #table-input h2, #produto-input h2 {
+    color:#fff;
+}
+
+#table-input {
+    width:75%;
+}
+
+#table-input input, #table-input select, #produto-input input, #produto-input select {
+    height: 100%;
+    font-size: 17px;
+    background:#111;
+    border: 1px solid #fff;
+    color:#fff;
+    display:inline-block;
+    width:25%;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+#table-input input::placeholder, #produto-input input::placeholder {
+    font-size: 15px;
     color:#fff;
 }

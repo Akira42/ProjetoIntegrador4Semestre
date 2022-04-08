@@ -12,7 +12,7 @@ $(function() {
 var xhr = new XMLHttpRequest();
 
 $('input#submitButton').click( function() {
-    var myUrl = 'https://estudo-springboo.herokuapp.com/users';
+    var myUrl = 'https://four-dev.herokuapp.com/users';
 
     var name = $("#name").val();
     var email = $("#email").val();
@@ -44,7 +44,7 @@ $('input#submitButton').click( function() {
 });
 
 $('input#get').click( function() {
-    var myUrl = 'https://estudo-springboo.herokuapp.com/users/';
+    var myUrl = 'https://four-dev.herokuapp.com/users';
 
     let id = $("#getId").val();
 
@@ -58,7 +58,7 @@ $('input#get').click( function() {
 });
 
 $('input#delete').click( function() {
-  var myUrl = 'https://estudo-springboo.herokuapp.com/users/';
+  var myUrl = 'https://four-dev.herokuapp.com/users';
 
   var id = $("#id").val();
 

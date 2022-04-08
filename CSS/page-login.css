@@ -82,3 +82,13 @@ section#page-content {
     left: 4rem;
     text-decoration: none;
 }
+
+#warning {
+    display:none;
+    color: #fff;
+    font-size: 15px
+}
+
+#warning.warningShow {
+    display:block;
+}
